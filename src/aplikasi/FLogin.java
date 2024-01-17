@@ -67,6 +67,7 @@ public class FLogin extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
         forgotPass = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
+        jShowPass = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         javax.swing.JButton btnSignUp = new javax.swing.JButton();
@@ -191,17 +192,21 @@ public class FLogin extends javax.swing.JFrame {
             }
         });
 
+        jShowPass.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jShowPass.setForeground(new java.awt.Color(0, 0, 0));
+        jShowPass.setText("Show Password");
+        jShowPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jShowPassActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                            .addComponent(txtUsername)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -210,7 +215,14 @@ public class FLogin extends javax.swing.JFrame {
                         .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(202, 202, 202)
-                        .addComponent(forgotPass, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(forgotPass, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jShowPass)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                .addComponent(txtUsername)))))
                 .addContainerGap(138, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -222,7 +234,9 @@ public class FLogin extends javax.swing.JFrame {
                 .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jShowPass)
+                .addGap(7, 7, 7)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(forgotPass)
@@ -401,6 +415,15 @@ public class FLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsernameActionPerformed
 
+    private void jShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jShowPassActionPerformed
+        // TODO add your handling code here:
+         if(jShowPass.isSelected()){
+            txtPassword.setEchoChar((char)0);
+        } else{
+            txtPassword.setEchoChar('0');
+        }
+    }//GEN-LAST:event_jShowPassActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -450,6 +473,7 @@ public class FLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JCheckBox jShowPass;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables

@@ -439,7 +439,7 @@ public class FProfil extends javax.swing.JFrame {
         // TODO add your handling code here:
         FProEdit edit = new FProEdit(userNama);
         edit.setVisible(true);
-        
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked

@@ -139,22 +139,36 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="66" pref="66" max="-2" attributes="0"/>
-                              <Component id="jLabel4" min="-2" pref="134" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="435" pref="435" max="-2" attributes="0"/>
                               <Component id="jLabel5" min="-2" pref="37" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="66" pref="66" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtNama" alignment="0" min="-2" pref="430" max="-2" attributes="0"/>
+                                  <Component id="txtNim" alignment="0" min="-2" pref="430" max="-2" attributes="0"/>
+                                  <Component id="lbNama" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbNim" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" min="-2" pref="134" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="618" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="66" pref="66" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="310" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="310" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jShowPass" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                               <Component id="btnRegister" min="-2" pref="180" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -164,8 +178,6 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtNama" alignment="0" min="-2" pref="430" max="-2" attributes="0"/>
-                                  <Component id="txtNim" alignment="0" min="-2" pref="430" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="cbSemester" min="-2" pref="220" max="-2" attributes="0"/>
                                       <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
@@ -198,11 +210,15 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabel4" min="-2" pref="39" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbNama" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                               <Component id="txtNama" min="-2" pref="42" max="-2" attributes="0"/>
-                              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbNim" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtNim" min="-2" pref="46" max="-2" attributes="0"/>
-                              <EmptySpace min="38" pref="38" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="cbSemester" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                                   <Component id="txtKelas" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
@@ -223,13 +239,15 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtPassword" min="-2" pref="50" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="btnRegister" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jShowPass" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                              <Component id="btnRegister" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="81" max="32767" attributes="0"/>
@@ -279,6 +297,7 @@
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNamaFocusGained"/>
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNamaFocusLost"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNamaActionPerformed"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNamaKeyReleased"/>
               </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="cbSemester">
@@ -335,6 +354,7 @@
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNimFocusGained"/>
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNimFocusLost"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNimActionPerformed"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNimKeyReleased"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtEmail">
@@ -368,6 +388,7 @@
                 <Property name="text" type="java.lang.String" value="SignUp"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRegisterMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegisterActionPerformed"/>
               </Events>
             </Component>
@@ -464,6 +485,45 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JCheckBox" name="jShowPass">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Show Password"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jShowPassActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbNama">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="a1" green="90" red="39" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="________"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbNim">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="a1" green="90" red="39" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="______"/>
+              </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="lbNimKeyReleased"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

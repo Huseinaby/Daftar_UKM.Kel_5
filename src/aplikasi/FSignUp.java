@@ -7,6 +7,10 @@ package aplikasi;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JTextField;
 
 /**
@@ -18,6 +22,54 @@ public class FSignUp extends javax.swing.JFrame {
     /**
      * Creates new form FSignUp
      */
+    public FSignUp() {
+        initComponents();
+        this.setSize(new java.awt.Dimension(1040, 735));
+
+        addPlace(txtPassword);
+
+    }
+    
+    public boolean nameExist() {
+        String nama = txtNama.getText();
+        
+        try {
+        Connection connection = Config.configDB();
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM user where nama_mhs='"+nama+"'");
+        
+        if(resultSet.next()){
+            return true;
+        } else {
+            return false;
+        }
+        
+        } catch (Exception e) {
+            System.out.println("Error in nameExist method: " + e.getMessage());
+            return false;
+        }
+    }
+    
+        public boolean nimExist() {
+        String nim = txtNim.getText();
+        
+        try {
+        Connection connection = Config.configDB();
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM user where nim='"+nim+"'");
+        
+        if(resultSet.next()){
+            return true;
+        } else {
+            return false;
+        }
+        
+        } catch (Exception e) {
+            System.out.println("Error in nimExist method: " + e.getMessage());
+            return false;
+        }
+    }
+    
     public void addPlace(JTextField textField) {
         Font font = textField.getFont();
         font = font.deriveFont(Font.ITALIC);
@@ -32,13 +84,7 @@ public class FSignUp extends javax.swing.JFrame {
         textField.setForeground(Color.black);
     }
 
-    public FSignUp() {
-        initComponents();
-        this.setSize(new java.awt.Dimension(1040, 735));
 
-        addPlace(txtPassword);
-
-    }
 
     public static boolean registerUser(String nama, String NIM, String semester, String prodi, String kelas, String email, String password) {
         try {
@@ -91,6 +137,9 @@ public class FSignUp extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jShowPass = new javax.swing.JCheckBox();
+        lbNama = new javax.swing.JLabel();
+        lbNim = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -162,6 +211,11 @@ public class FSignUp extends javax.swing.JFrame {
                 txtNamaActionPerformed(evt);
             }
         });
+        txtNama.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNamaKeyReleased(evt);
+            }
+        });
 
         cbSemester.setBackground(new java.awt.Color(255, 255, 255));
         cbSemester.setForeground(new java.awt.Color(0, 0, 0));
@@ -200,6 +254,11 @@ public class FSignUp extends javax.swing.JFrame {
                 txtNimActionPerformed(evt);
             }
         });
+        txtNim.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNimKeyReleased(evt);
+            }
+        });
 
         txtEmail.setBackground(new java.awt.Color(255, 255, 255));
         txtEmail.setForeground(new java.awt.Color(0, 0, 0));
@@ -217,6 +276,11 @@ public class FSignUp extends javax.swing.JFrame {
         btnRegister.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRegister.setForeground(new java.awt.Color(255, 255, 255));
         btnRegister.setText("SignUp");
+        btnRegister.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegisterMouseClicked(evt);
+            }
+        });
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
@@ -277,6 +341,28 @@ public class FSignUp extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jShowPass.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jShowPass.setForeground(new java.awt.Color(255, 255, 255));
+        jShowPass.setText("Show Password");
+        jShowPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jShowPassActionPerformed(evt);
+            }
+        });
+
+        lbNama.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbNama.setForeground(new java.awt.Color(57, 144, 161));
+        lbNama.setText("________");
+
+        lbNim.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbNim.setForeground(new java.awt.Color(57, 144, 161));
+        lbNim.setText("______");
+        lbNim.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lbNimKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -284,18 +370,28 @@ public class FSignUp extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(435, 435, 435)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNim, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbNama)
+                            .addComponent(lbNim)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 618, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(310, 310, 310)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(310, 310, 310))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jShowPass)
+                                .addGap(123, 123, 123)))
                         .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -303,8 +399,6 @@ public class FSignUp extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNim, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(cbSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(7, 7, 7)
@@ -328,11 +422,15 @@ public class FSignUp extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbNama)
+                        .addGap(5, 5, 5)
                         .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbNim)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNim, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
+                        .addGap(24, 24, 24)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -350,11 +448,13 @@ public class FSignUp extends javax.swing.JFrame {
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jShowPass)
+                        .addGap(20, 20, 20)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(28, 28, 28)
+                        .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
 
@@ -415,12 +515,18 @@ public class FSignUp extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String password = new String(txtPassword.getPassword());
 
-        if (registerUser(nama, nim, semester, prodi, kelas, email, password)) {
-            JOptionPane.showMessageDialog(null, "Registration successful");
+        if(nameExist() || nimExist()){
+            JOptionPane.showMessageDialog(null,"Nama atau nim tidak tersedia");
         } else {
-            JOptionPane.showMessageDialog(null, "Registration Failed!");
+            if (registerUser(nama, nim, semester, prodi, kelas, email, password)) {
+                JOptionPane.showMessageDialog(null, "Akun Berhasil dibuat\nSilahkan Login");
+                FLogin back = new FLogin();
+                back.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Registration Failed!");
+            }
         }
-
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
@@ -526,6 +632,47 @@ public class FSignUp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPasswordFocusLost
 
+    private void jShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jShowPassActionPerformed
+        // TODO add your handling code here:
+         if(jShowPass.isSelected()){
+            txtPassword.setEchoChar((char)0);
+        } else{
+            txtPassword.setEchoChar('0');
+        }
+    }//GEN-LAST:event_jShowPassActionPerformed
+
+    private void txtNamaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNamaKeyReleased
+        // TODO add your handling code here:
+        if(nameExist()){
+            lbNama.setText("Nama tidak tersedia");
+            lbNama.setForeground(new java.awt.Color(242, 44, 44));
+        } else {
+            lbNama.setText(".");
+            lbNama.setForeground(new java.awt.Color(57, 144, 161));
+        }
+    }//GEN-LAST:event_txtNamaKeyReleased
+
+    private void lbNimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbNimKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbNimKeyReleased
+
+    private void txtNimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNimKeyReleased
+        // TODO add your handling code here:
+        if(nimExist()){
+            lbNim.setText("NIM sudah ada");
+            lbNim.setForeground(new java.awt.Color(242, 44, 44));
+            
+        } else {
+            lbNim.setText(".");
+            lbNim.setForeground(new java.awt.Color(57, 144, 161));
+        }
+    }//GEN-LAST:event_txtNimKeyReleased
+
+    private void btnRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegisterMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnRegisterMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -576,6 +723,9 @@ public class FSignUp extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JCheckBox jShowPass;
+    private javax.swing.JLabel lbNama;
+    private javax.swing.JLabel lbNim;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtKelas;
     private javax.swing.JTextField txtNama;

@@ -5,6 +5,7 @@
 package aplikasi;
 
 import java.sql.Connection;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -273,6 +274,8 @@ public class FProEdit extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        FProfil profil = new FProfil(useNama);
+        profil.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -293,6 +296,8 @@ public class FProEdit extends javax.swing.JFrame {
             FLogin login = new FLogin();
             login.setVisible(true);
             this.dispose();
+            FProfil FP = new FProfil(null);
+            FP.dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Perubahan Data Gagal "+e.getMessage());
         }

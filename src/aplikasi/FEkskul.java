@@ -25,10 +25,7 @@ public class FEkskul extends javax.swing.JFrame {
         initComponents();
         this.setSize(new java.awt.Dimension(1040, 735));
         tampilData();
-
     }
-    
-
     
     private void tampilData(){
         DefaultTableModel model = new DefaultTableModel();
@@ -36,9 +33,6 @@ public class FEkskul extends javax.swing.JFrame {
         model.addColumn("Nama Ekskul");
         model.addColumn("email ekskul");
         model.addColumn("Tentang");
-        
-        
-        
         
         try {
             String sql = "SELECT * FROM ekskul";
@@ -53,32 +47,27 @@ public class FEkskul extends javax.swing.JFrame {
                 Object[]{nama,email,tentang});
             }
             tblEkskul.setModel(model);
-            
-           
-            
+
             ListSelectionModel rowSelectionModel = tblEkskul.getSelectionModel();
+            
             rowSelectionModel.addListSelectionListener(new ListSelectionListener() {
-            public void valueChanged(ListSelectionEvent e) {
-                int selectedRow = tblEkskul.getSelectedRow();
-                 if (selectedRow != -1) {
-            
-                String namaEkskul = (String)tblEkskul.getValueAt(selectedRow, 0);
-                String emailEkskul = (String) tblEkskul.getValueAt(selectedRow, 1);
-                String tentang1 = (String) tblEkskul.getValueAt(selectedRow, 2);
+                public void valueChanged(ListSelectionEvent e) {
+                    int selectedRow = tblEkskul.getSelectedRow();
+                     if (selectedRow != -1) {
 
-                lbTitle.setText(namaEkskul);
-                lbEmail.setText(emailEkskul);
-                txaTentang.setText(tentang1);
-                txaTentang.setLineWrap(true);
-                txaTentang.setWrapStyleWord(true);
-                txaTentang.setEditable(false);
-                
-            
-                        }
-                  }
-        });
-            
+                        String namaEkskul = (String)tblEkskul.getValueAt(selectedRow, 0);
+                        String emailEkskul = (String) tblEkskul.getValueAt(selectedRow, 1);
+                        String tentang1 = (String) tblEkskul.getValueAt(selectedRow, 2);
 
+                        lbTitle.setText(namaEkskul);
+                        lbEmail.setText(emailEkskul);
+                        txaTentang.setText(tentang1);
+                        txaTentang.setLineWrap(true);
+                        txaTentang.setWrapStyleWord(true);
+                        txaTentang.setEditable(false);      
+                    }
+                }
+            });
         } catch(Exception e){
             
         }
