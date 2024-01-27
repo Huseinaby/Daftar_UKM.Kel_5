@@ -30,44 +30,39 @@ public class FSignUp extends javax.swing.JFrame {
 
     }
     
-    public boolean nameExist() {
-        String nama = txtNama.getText();
-        
+    public boolean nameExist(String nama) { 
         try {
         Connection connection = Config.configDB();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM user where nama_mhs='"+nama+"'");
         
-        if(resultSet.next()){
-            return true;
-        } else {
-            return false;
-        }
-        
+            if(resultSet.next()){
+                return true;
+            } else {
+                return false;
+            }
         } catch (Exception e) {
             System.out.println("Error in nameExist method: " + e.getMessage());
             return false;
         }
     }
     
-        public boolean nimExist() {
-        String nim = txtNim.getText();
-        
-        try {
-        Connection connection = Config.configDB();
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM user where nim='"+nim+"'");
-        
-        if(resultSet.next()){
-            return true;
-        } else {
-            return false;
-        }
-        
-        } catch (Exception e) {
-            System.out.println("Error in nimExist method: " + e.getMessage());
-            return false;
-        }
+        public boolean nimExist(String nim) {       
+            try {
+                Connection connection = Config.configDB();
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("SELECT * FROM user where nim='"+nim+"'");
+
+                if(resultSet.next()){
+                    return true;
+                } else {
+                    return false;
+                }
+
+            } catch (Exception e) {
+                System.out.println("Error in nimExist method: " + e.getMessage());
+                return false;
+            }
     }
     
     public void addPlace(JTextField textField) {
@@ -515,7 +510,7 @@ public class FSignUp extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String password = new String(txtPassword.getPassword());
 
-        if(nameExist() || nimExist()){
+        if(nameExist(nama) || nimExist(nim)){
             JOptionPane.showMessageDialog(null,"Nama atau nim tidak tersedia");
         } else {
             if (registerUser(nama, nim, semester, prodi, kelas, email, password)) {
@@ -643,7 +638,9 @@ public class FSignUp extends javax.swing.JFrame {
 
     private void txtNamaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNamaKeyReleased
         // TODO add your handling code here:
-        if(nameExist()){
+        String nama = txtNama.getText();
+        
+        if(nameExist(nama)){
             lbNama.setText("Nama tidak tersedia");
             lbNama.setForeground(new java.awt.Color(242, 44, 44));
         } else {
@@ -658,7 +655,8 @@ public class FSignUp extends javax.swing.JFrame {
 
     private void txtNimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNimKeyReleased
         // TODO add your handling code here:
-        if(nimExist()){
+        String nim = txtNim.getText();
+        if(nimExist(nim)){
             lbNim.setText("NIM sudah ada");
             lbNim.setForeground(new java.awt.Color(242, 44, 44));
             
